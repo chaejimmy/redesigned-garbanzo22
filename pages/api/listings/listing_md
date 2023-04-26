@@ -1,0 +1,15 @@
+First we created a route to create a new listing by loggedIn user
+For testing purposes The currentUser object was sent with some hardcoded userid to the api call 
+This will create a listing in the mongodb Listing model
+
+For testing purpose Since we don't have information that if currentuser is signed in or not, some fields are passed with hardcoded values to complete the field values requored while posting a listing as a testing measure as 
+
+Now to implement Displaying all the listings 
+For Fetching Listings -> implement getListings.ts in actions
+Since Listings of all posts will be displayed iN HOME component , we wont's need API calls,
+We can just implement an action
+
+The action getListings will send a json object which if used in home component or client side to receive response using prisma client from getlistings.ts will be blocked
+As prisma client dont work for client side rendergin or client components 
+Thus, Created a get method for the api endpoint 'api/listings/route' to store all the listings in advance in json format
+Then fetch that reponse from api route to Home Component using fetch call

@@ -1,0 +1,33 @@
+To Start, using prisma with mongodb 
+Run command -> npm install prisma -D
+npx init prisma
+
+Now under schema set provider to mongodb and set Databseurl in env file to mongodb connect url
+
+Under prisma.schema create model
+
+List all required keys required for User auth  and mark all optional fields as ?
+1 -> The favouriteIds fields worls when User lists a listing as favourite then an array of Ids are sent to backend 
+2-> hashedPassword does not exist or Google Or Apple sigin/signup
+
+Assign exact variables to the array of models required -> Example accounts Account[] (has array of Account models)
+
+Account model : This model consists of important fields required for user's Account which includes
+[id, userId, type,provider, providerAccountId, ]
+and optional fields as:[refresh and access token, expiry, token_type, scope, id_token, session_state]
+
+Now create a relation between user and Account using field as userId array and refernces as Id
+Setup a @@unique to always have a unique combination of provider and providerAccountId
+
+Once all relations are established which includes:
+User -> Listings , Reservations, Accounts
+Listing -> Reservations
+Account-> Listing, 
+
+Create Prisma client by running -> npx prisma db push
+
+This command pushes our model as collections to mongodb cluster
+Install dependencies for nextjs auth, prisma-client, next-auth prisma-adapter using command
+"npm install next-auth @prisma/client @next-auth/prisma-adapter"
+
+FOr credentials login -npm i bcrypt,npm install -D @types/bcrypt

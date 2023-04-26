@@ -1,0 +1,3 @@
+Importing prisma client we can assign it to a global variables prisma
+
+Once you have instantiated PrismaClient, you can start sending queries in your code:
